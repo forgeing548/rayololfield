@@ -105,7 +105,7 @@ local function secureNotify(wType, title, content)
 	if secureWarnings[wType] then return end
 	secureWarnings[wType] = true
 	task.spawn(function()
-		while not RayfieldLibrary or not RayfieldLibrary.Notify do task.wait(0) end
+		while not RayfieldLibrary or not RayfieldLibrary.Notify do task.wait() end
 		RayfieldLibrary:Notify({
 			Title = title,
 			Content = content,
@@ -804,7 +804,7 @@ do
 				end)
 
 				while nextToFetch() do
-					task.wait(0)
+					task.wait()
 				end
 			end
 
@@ -1236,15 +1236,15 @@ function RayfieldLibrary:Notify(data) -- action e.g open messages
 
 		TweenService:Create(newNotification, TweenInfo.new(0, Enum.EasingStyle.Exponential), {Size = UDim2.new(1, 0, 0, math.max(bounds[1] + bounds[2] + 31, 60))}):Play()
 
-		task.wait(0)
+		task.wait()
 		TweenService:Create(newNotification, TweenInfo.new(0, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.45}):Play()
 		TweenService:Create(newNotification.Title, TweenInfo.new(0, Enum.EasingStyle.Exponential), {TextTransparency = 0}):Play()
 
-		task.wait(0)
+		task.wait()
 
 		TweenService:Create(newNotification.Icon, TweenInfo.new(0, Enum.EasingStyle.Exponential), {ImageTransparency = 0}):Play()
 
-		task.wait(0)
+		task.wait()
 		TweenService:Create(newNotification.Description, TweenInfo.new(0, Enum.EasingStyle.Exponential), {TextTransparency = 0.35}):Play()
 		TweenService:Create(newNotification.UIStroke, TweenInfo.new(0, Enum.EasingStyle.Exponential), {Transparency = 0.95}):Play()
 		TweenService:Create(newNotification.Shadow, TweenInfo.new(0, Enum.EasingStyle.Exponential), {ImageTransparency = 0.82}):Play()
@@ -1261,7 +1261,7 @@ function RayfieldLibrary:Notify(data) -- action e.g open messages
 
 		TweenService:Create(newNotification, TweenInfo.new(0, Enum.EasingStyle.Exponential), {Size = UDim2.new(1, -90, 0, 0)}):Play()
 
-		task.wait(1)
+		task.wait()
 
 		TweenService:Create(newNotification, TweenInfo.new(0, Enum.EasingStyle.Exponential), {Size = UDim2.new(1, -90, 0, -Notifications:FindFirstChild("UIListLayout").Padding.Offset)}):Play()
 
@@ -1442,7 +1442,7 @@ local function Hide(notify: boolean?)
 
 	setElementsVisible(false)
 
-	task.wait(0)
+	task.wait()
 	Main.Visible = false
 	Debounce = false
 end
@@ -1459,17 +1459,17 @@ local function Maximise()
 	TweenService:Create(Main, TweenInfo.new(0, Enum.EasingStyle.Exponential), {Size = useMobileSizing and UDim2.new(0, 500, 0, 275) or UDim2.new(0, 500, 0, 475)}):Play()
 	TweenService:Create(Topbar, TweenInfo.new(0, Enum.EasingStyle.Exponential), {Size = UDim2.new(0, 500, 0, 45)}):Play()
 	TabList.Visible = true
-	task.wait(0)
+	task.wait()
 
 	Elements.Visible = true
 
 	setElementsVisible(true)
 
-	task.wait(0)
+	task.wait()
 
 	setTabButtonsVisible(true)
 
-	task.wait(0)
+	task.wait()
 	Debounce = false
 end
 
@@ -1492,7 +1492,7 @@ local function Unhide()
 		TweenService:Create(MPrompt.Title, TweenInfo.new(0, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
 
 		task.spawn(function()
-			task.wait(0)
+			task.wait()
 			MPrompt.Visible = false
 		end)
 	end
@@ -1522,7 +1522,7 @@ local function Unhide()
 
 	TweenService:Create(dragBarCosmetic, TweenInfo.new(0, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {BackgroundTransparency = 0.5}):Play()
 
-	task.wait(0)
+	task.wait()
 	Minimised = false
 	Debounce = false
 end
@@ -1547,12 +1547,12 @@ local function Minimise()
 	TweenService:Create(Main, TweenInfo.new(0, Enum.EasingStyle.Exponential), {Size = UDim2.new(0, 495, 0, 45)}):Play()
 	TweenService:Create(Topbar, TweenInfo.new(0, Enum.EasingStyle.Exponential), {Size = UDim2.new(0, 495, 0, 45)}):Play()
 
-	task.wait(0)
+	task.wait()
 
 	Elements.Visible = false
 	TabList.Visible = false
 
-	task.wait(0)
+	task.wait()
 	Debounce = false
 end
 
@@ -1665,7 +1665,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 			Rayfield.Enabled = true
 			Rayfield.Loading.Visible = true
 
-			task.wait(0)
+			task.wait()
 			Rayfield.Loading.Visible = false
 		end
 	end
@@ -1929,18 +1929,18 @@ function RayfieldLibrary:CreateWindow(Settings)
 			TweenService:Create(KeyMain, TweenInfo.new(0, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0}):Play()
 			TweenService:Create(KeyMain, TweenInfo.new(0, Enum.EasingStyle.Exponential), {Size = UDim2.new(0, 500, 0, 187)}):Play()
 			TweenService:Create(KeyMain.Shadow.Image, TweenInfo.new(0, Enum.EasingStyle.Exponential), {ImageTransparency = 0.5}):Play()
-			task.wait(0)
+			task.wait()
 			TweenService:Create(KeyMain.Title, TweenInfo.new(0, Enum.EasingStyle.Exponential), {TextTransparency = 0}):Play()
 			TweenService:Create(KeyMain.Subtitle, TweenInfo.new(0, Enum.EasingStyle.Exponential), {TextTransparency = 0}):Play()
-			task.wait(0)
+			task.wait()
 			TweenService:Create(KeyMain.KeyNote, TweenInfo.new(0, Enum.EasingStyle.Exponential), {TextTransparency = 0}):Play()
 			TweenService:Create(KeyMain.Input, TweenInfo.new(0, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0}):Play()
 			TweenService:Create(KeyMain.Input.UIStroke, TweenInfo.new(0, Enum.EasingStyle.Exponential), {Transparency = 0}):Play()
 			TweenService:Create(KeyMain.Input.InputBox, TweenInfo.new(0, Enum.EasingStyle.Exponential), {TextTransparency = 0}):Play()
-			task.wait(0)
+			task.wait()
 			TweenService:Create(KeyMain.NoteTitle, TweenInfo.new(0, Enum.EasingStyle.Exponential), {TextTransparency = 0}):Play()
 			TweenService:Create(KeyMain.NoteMessage, TweenInfo.new(0, Enum.EasingStyle.Exponential), {TextTransparency = 0}):Play()
-			task.wait(0)
+			task.wait()
 			TweenService:Create(KeyMain.Hide, TweenInfo.new(0, Enum.EasingStyle.Exponential), {ImageTransparency = 0.3}):Play()
 
 
@@ -1963,7 +1963,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 				end
 				if KeyFound then
 					fadeOutKeyUI(KeyMain)
-					task.wait(0)
+					task.wait()
 					Passthrough = true
 					KeyMain.Visible = false
 					if Settings.KeySettings.SaveKey then
@@ -1973,7 +1973,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 				else
 					if AttemptsRemaining == 0 then
 						fadeOutKeyUI(KeyMain)
-						task.wait(0)
+						task.wait()
 						Players.LocalPlayer:Kick("No Attempts Remaining")
 						game:Shutdown()
 					end
@@ -1981,9 +1981,9 @@ function RayfieldLibrary:CreateWindow(Settings)
 					AttemptsRemaining = AttemptsRemaining - 1
 					TweenService:Create(KeyMain, TweenInfo.new(0, Enum.EasingStyle.Exponential), {Size = UDim2.new(0, 467, 0, 175)}):Play()
 					TweenService:Create(KeyMain, TweenInfo.new(0, Enum.EasingStyle.Elastic), {Position = UDim2.new(0.495,0,0.5,0)}):Play()
-					task.wait(0)
+					task.wait()
 					TweenService:Create(KeyMain, TweenInfo.new(0, Enum.EasingStyle.Elastic), {Position = UDim2.new(0.505,0,0.5,0)}):Play()
-					task.wait(0)
+					task.wait()
 					TweenService:Create(KeyMain, TweenInfo.new(0, Enum.EasingStyle.Exponential), {Position = UDim2.new(0.5,0,0.5,0)}):Play()
 					TweenService:Create(KeyMain, TweenInfo.new(0, Enum.EasingStyle.Exponential), {Size = UDim2.new(0, 500, 0, 187)}):Play()
 				end
@@ -1991,7 +1991,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 
 			KeyMain.Hide.MouseButton1Click:Connect(function()
 				fadeOutKeyUI(KeyMain)
-				task.wait(0)
+				task.wait()
 				Passthrough = true
 				RayfieldLibrary:Destroy()
 				KeyUI:Destroy()
@@ -2009,14 +2009,14 @@ function RayfieldLibrary:CreateWindow(Settings)
 	Notifications.Visible = true
 	Rayfield.Enabled = true
 
-	task.wait(0)
+	task.wait()
 	TweenService:Create(Main, TweenInfo.new(0, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0}):Play()
 	TweenService:Create(Main.Shadow.Image, TweenInfo.new(0, Enum.EasingStyle.Exponential), {ImageTransparency = 0.6}):Play()
-	task.wait(0)
+	task.wait()
 	TweenService:Create(LoadingFrame.Title, TweenInfo.new(0, Enum.EasingStyle.Exponential), {TextTransparency = 0}):Play()
-	task.wait(0)
+	task.wait()
 	TweenService:Create(LoadingFrame.Subtitle, TweenInfo.new(0, Enum.EasingStyle.Exponential), {TextTransparency = 0}):Play()
-	task.wait(0)
+	task.wait()
 	TweenService:Create(LoadingFrame.Version, TweenInfo.new(0, Enum.EasingStyle.Exponential), {TextTransparency = 0}):Play()
 
 
@@ -2097,7 +2097,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 
 
 		-- Animate
-		task.wait(0)
+		task.wait()
 		if FirstTab or Ext then
 			TabButton.BackgroundColor3 = SelectedTheme.TabBackground
 			TabButton.Image.ImageColor3 = SelectedTheme.TabTextColor
@@ -2178,7 +2178,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 					Button.Title.Text = "Callback Error"
 					print("Rayfield | "..ButtonSettings.Name.." Callback Error " ..tostring(Response))
 					warn('Check docs.sirius.menu for help with Rayfield specific development.')
-					task.wait(0)
+					task.wait()
 					Button.Title.Text = ButtonSettings.Name
 					TweenService:Create(Button, TweenInfo.new(0, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.ElementBackground}):Play()
 					TweenService:Create(Button.ElementIndicator, TweenInfo.new(0, Enum.EasingStyle.Exponential), {TextTransparency = 0.9}):Play()
@@ -2190,7 +2190,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 					TweenService:Create(Button, TweenInfo.new(0, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.ElementBackgroundHover}):Play()
 					TweenService:Create(Button.ElementIndicator, TweenInfo.new(0, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
 					TweenService:Create(Button.UIStroke, TweenInfo.new(0, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
-					task.wait(0)
+					task.wait()
 					TweenService:Create(Button, TweenInfo.new(0, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.ElementBackground}):Play()
 					TweenService:Create(Button.ElementIndicator, TweenInfo.new(0, Enum.EasingStyle.Exponential), {TextTransparency = 0.9}):Play()
 					TweenService:Create(Button.UIStroke, TweenInfo.new(0, Enum.EasingStyle.Exponential), {Transparency = 0}):Play()
@@ -2257,7 +2257,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 				task.spawn(function()
 					TweenService:Create(ColorPicker, TweenInfo.new(0, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.ElementBackgroundHover}):Play()
 					TweenService:Create(ColorPicker.UIStroke, TweenInfo.new(0, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
-					task.wait(0)
+					task.wait()
 					TweenService:Create(ColorPicker, TweenInfo.new(0, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.ElementBackground}):Play()
 					TweenService:Create(ColorPicker.UIStroke, TweenInfo.new(0, Enum.EasingStyle.Exponential), {Transparency = 0}):Play()
 				end)
@@ -2265,7 +2265,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 				if not opened then
 					opened = true 
 					TweenService:Create(Background, TweenInfo.new(0, Enum.EasingStyle.Exponential), {Size = UDim2.new(0, 18, 0, 15)}):Play()
-					task.wait(0)
+					task.wait()
 					TweenService:Create(ColorPicker, TweenInfo.new(0, Enum.EasingStyle.Exponential), {Size = UDim2.new(1, -10, 0, 120)}):Play()
 					TweenService:Create(Background, TweenInfo.new(0, Enum.EasingStyle.Exponential), {Size = UDim2.new(0, 173, 0, 86)}):Play()
 					TweenService:Create(Display, TweenInfo.new(0, Enum.EasingStyle.Exponential), {BackgroundTransparency = 1}):Play()
@@ -2665,7 +2665,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 					Input.Title.Text = "Callback Error"
 					print("Rayfield | "..InputSettings.Name.." Callback Error " ..tostring(Response))
 					warn('Check docs.sirius.menu for help with Rayfield specific development.')
-					task.wait(0)
+					task.wait()
 					Input.Title.Text = InputSettings.Name
 					TweenService:Create(Input, TweenInfo.new(0, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.ElementBackground}):Play()
 					TweenService:Create(Input.UIStroke, TweenInfo.new(0, Enum.EasingStyle.Exponential), {Transparency = 0}):Play()
@@ -2784,7 +2784,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 			Dropdown.Interact.MouseButton1Click:Connect(function()
 				TweenService:Create(Dropdown, TweenInfo.new(0, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.ElementBackgroundHover}):Play()
 				TweenService:Create(Dropdown.UIStroke, TweenInfo.new(0, Enum.EasingStyle.Exponential), {Transparency = 1}):Play()
-				task.wait(0)
+				task.wait()
 				TweenService:Create(Dropdown, TweenInfo.new(0, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.ElementBackground}):Play()
 				TweenService:Create(Dropdown.UIStroke, TweenInfo.new(0, Enum.EasingStyle.Exponential), {Transparency = 0}):Play()
 				if Debounce then return end
@@ -2800,7 +2800,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 					end
 					TweenService:Create(Dropdown.List, TweenInfo.new(0, Enum.EasingStyle.Exponential), {ScrollBarImageTransparency = 1}):Play()
 					TweenService:Create(Dropdown.Toggle, TweenInfo.new(0, Enum.EasingStyle.Exponential), {Rotation = 180}):Play()	
-					task.wait(0)
+					task.wait()
 					Dropdown.List.Visible = false
 					Debounce = false
 				else
@@ -2905,7 +2905,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 							Dropdown.Title.Text = "Callback Error"
 							print("Rayfield | "..DropdownSettings.Name.." Callback Error " ..tostring(Response))
 							warn('Check docs.sirius.menu for help with Rayfield specific development.')
-							task.wait(0)
+							task.wait()
 							Dropdown.Title.Text = DropdownSettings.Name
 							TweenService:Create(Dropdown, TweenInfo.new(0, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.ElementBackground}):Play()
 							TweenService:Create(Dropdown.UIStroke, TweenInfo.new(0, Enum.EasingStyle.Exponential), {Transparency = 0}):Play()
@@ -2917,7 +2917,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 							end
 						end
 						if not DropdownSettings.MultipleOptions then
-							task.wait(0)
+							task.wait()
 							TweenService:Create(Dropdown, TweenInfo.new(0, Enum.EasingStyle.Exponential), {Size = UDim2.new(1, -10, 0, 45)}):Play()
 							for _, DropdownOpt in ipairs(Dropdown.List:GetChildren()) do
 								if DropdownOpt.ClassName == "Frame" and DropdownOpt.Name ~= "Placeholder" then
@@ -2928,7 +2928,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 							end
 							TweenService:Create(Dropdown.List, TweenInfo.new(0, Enum.EasingStyle.Exponential), {ScrollBarImageTransparency = 1}):Play()
 							TweenService:Create(Dropdown.Toggle, TweenInfo.new(0, Enum.EasingStyle.Exponential), {Rotation = 180}):Play()	
-							task.wait(0)
+							task.wait()
 							Dropdown.List.Visible = false
 						end
 						Debounce = false
@@ -2995,7 +2995,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 					Dropdown.Title.Text = "Callback Error"
 					print("Rayfield | "..DropdownSettings.Name.." Callback Error " ..tostring(Response))
 					warn('Check docs.sirius.menu for help with Rayfield specific development.')
-					task.wait(0)
+					task.wait()
 					Dropdown.Title.Text = DropdownSettings.Name
 					TweenService:Create(Dropdown, TweenInfo.new(0, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.ElementBackground}):Play()
 					TweenService:Create(Dropdown.UIStroke, TweenInfo.new(0, Enum.EasingStyle.Exponential), {Transparency = 0}):Play()
@@ -3140,13 +3140,13 @@ function RayfieldLibrary:CreateWindow(Settings)
 							Keybind.Title.Text = "Callback Error"
 							print("Rayfield | "..KeybindSettings.Name.." Callback Error " ..tostring(Response))
 							warn('Check docs.sirius.menu for help with Rayfield specific development.')
-							task.wait(0)
+							task.wait()
 							Keybind.Title.Text = KeybindSettings.Name
 							TweenService:Create(Keybind, TweenInfo.new(0, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.ElementBackground}):Play()
 							TweenService:Create(Keybind.UIStroke, TweenInfo.new(0, Enum.EasingStyle.Exponential), {Transparency = 0}):Play()
 						end
 					else
-						task.wait(0)
+						task.wait()
 						if Held then
 							local Loop; Loop = RunService.Stepped:Connect(function()
 								if not Held then
@@ -3271,7 +3271,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 					Toggle.Title.Text = "Callback Error"
 					print("Rayfield | "..ToggleSettings.Name.." Callback Error " ..tostring(Response))
 					warn('Check docs.sirius.menu for help with Rayfield specific development.')
-					task.wait(0)
+					task.wait()
 					Toggle.Title.Text = ToggleSettings.Name
 					TweenService:Create(Toggle, TweenInfo.new(0, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.ElementBackground}):Play()
 					TweenService:Create(Toggle.UIStroke, TweenInfo.new(0, Enum.EasingStyle.Exponential), {Transparency = 0}):Play()
@@ -3321,7 +3321,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 					Toggle.Title.Text = "Callback Error"
 					print("Rayfield | "..ToggleSettings.Name.." Callback Error " ..tostring(Response))
 					warn('Check docs.sirius.menu for help with Rayfield specific development.')
-					task.wait(0)
+					task.wait()
 					Toggle.Title.Text = ToggleSettings.Name
 					TweenService:Create(Toggle, TweenInfo.new(0, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.ElementBackground}):Play()
 					TweenService:Create(Toggle.UIStroke, TweenInfo.new(0, Enum.EasingStyle.Exponential), {Transparency = 0}):Play()
@@ -3470,7 +3470,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 								Slider.Title.Text = "Callback Error"
 								print("Rayfield | "..SliderSettings.Name.." Callback Error " ..tostring(Response))
 								warn('Check docs.sirius.menu for help with Rayfield specific development.')
-								task.wait(0)
+								task.wait()
 								Slider.Title.Text = SliderSettings.Name
 								TweenService:Create(Slider, TweenInfo.new(0, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.ElementBackground}):Play()
 								TweenService:Create(Slider.UIStroke, TweenInfo.new(0, Enum.EasingStyle.Exponential), {Transparency = 0}):Play()
@@ -3504,7 +3504,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 					Slider.Title.Text = "Callback Error"
 					print("Rayfield | "..SliderSettings.Name.." Callback Error " ..tostring(Response))
 					warn('Check docs.sirius.menu for help with Rayfield specific development.')
-					task.wait(0)
+					task.wait()
 					Slider.Title.Text = SliderSettings.Name
 					TweenService:Create(Slider, TweenInfo.new(0, Enum.EasingStyle.Exponential), {BackgroundColor3 = SelectedTheme.ElementBackground}):Play()
 					TweenService:Create(Slider.UIStroke, TweenInfo.new(0, Enum.EasingStyle.Exponential), {Transparency = 0}):Play()
@@ -3556,13 +3556,13 @@ function RayfieldLibrary:CreateWindow(Settings)
 	Elements.Visible = true
 
 
-	task.wait(0)
+	task.wait()
 	TweenService:Create(Main, TweenInfo.new(0, Enum.EasingStyle.Exponential, Enum.EasingDirection.InOut), {Size = UDim2.new(0, 390, 0, 90)}):Play()
-	task.wait(0)
+	task.wait()
 	TweenService:Create(LoadingFrame.Title, TweenInfo.new(0, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
 	TweenService:Create(LoadingFrame.Subtitle, TweenInfo.new(0, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
 	TweenService:Create(LoadingFrame.Version, TweenInfo.new(0, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
-	task.wait(0)
+	task.wait()
 	TweenService:Create(Main, TweenInfo.new(0, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {Size = useMobileSizing and UDim2.new(0, 500, 0, 275) or UDim2.new(0, 500, 0, 475)}):Play()
 	TweenService:Create(Main.Shadow.Image, TweenInfo.new(0, Enum.EasingStyle.Exponential), {ImageTransparency = 0.6}):Play()
 
@@ -3579,24 +3579,24 @@ function RayfieldLibrary:CreateWindow(Settings)
 	Topbar.Hide.ImageTransparency = 1
 
 
-	task.wait(0)
+	task.wait()
 	Topbar.Visible = true
 	TweenService:Create(Topbar, TweenInfo.new(0, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0}):Play()
 	TweenService:Create(Topbar.CornerRepair, TweenInfo.new(0, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0}):Play()
-	task.wait(0)
+	task.wait()
 	TweenService:Create(Topbar.Divider, TweenInfo.new(0, Enum.EasingStyle.Exponential), {Size = UDim2.new(1, 0, 0, 1)}):Play()
 	TweenService:Create(Topbar.Title, TweenInfo.new(0, Enum.EasingStyle.Exponential), {TextTransparency = 0}):Play()
-	task.wait(0)
+	task.wait()
 	TweenService:Create(Topbar.Search, TweenInfo.new(0, Enum.EasingStyle.Exponential), {ImageTransparency = 0.8}):Play()
-	task.wait(0)
+	task.wait()
 	if Topbar:FindFirstChild('Settings') then
 		TweenService:Create(Topbar.Settings, TweenInfo.new(0, Enum.EasingStyle.Exponential), {ImageTransparency = 0.8}):Play()
-		task.wait(0)
+		task.wait()
 	end
 	TweenService:Create(Topbar.ChangeSize, TweenInfo.new(0, Enum.EasingStyle.Exponential), {ImageTransparency = 0.8}):Play()
-	task.wait(0)
+	task.wait()
 	TweenService:Create(Topbar.Hide, TweenInfo.new(0, Enum.EasingStyle.Exponential), {ImageTransparency = 0.8}):Play()
-	task.wait(0)
+	task.wait()
 
 	if dragBar then
 		TweenService:Create(dragBarCosmetic, TweenInfo.new(0, Enum.EasingStyle.Exponential), {BackgroundTransparency = 0.7}):Play()
@@ -3742,7 +3742,7 @@ end)
 
 Main.Search.Input.FocusLost:Connect(function(enterPressed)
 	if #Main.Search.Input.Text == 0 and searchOpen then
-		task.wait(0)
+		task.wait()
 		closeSearch()
 	end
 end)
@@ -4095,7 +4095,7 @@ task.delay(4, function()
 		TweenService:Create(Main.Notice, TweenInfo.new(0, Enum.EasingStyle.Exponential, Enum.EasingDirection.InOut), {Size = UDim2.new(0, 100, 0, 25), Position = UDim2.new(0.5, 0, 0, -100), BackgroundTransparency = 1}):Play()
 		TweenService:Create(Main.Notice.Title, TweenInfo.new(0, Enum.EasingStyle.Exponential), {TextTransparency = 1}):Play()
 
-		task.wait(0)
+		task.wait()
 		Main.Notice.Visible = false
 	end
 end)
