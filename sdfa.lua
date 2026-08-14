@@ -1942,6 +1942,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 	Elements.UIPageLayout.ScrollWheelInputEnabled = false
 	Elements.UIPageLayout.GamepadInputEnabled = false
 	Elements.UIPageLayout.TouchInputEnabled = false
+	Elements.UIPageLayout.Animated = false
 	TabList.Template.Visible = false
 
 	-- Tab
@@ -1990,13 +1991,18 @@ function RayfieldLibrary:CreateWindow(Settings)
 				TemplateElement:Destroy()
 			end
 		end
-
+				
 		TabPage.Parent = Elements
 		if not FirstTab and not Ext then
-			Elements.UIPageLayout.Animated = false
 			Elements.UIPageLayout:JumpTo(TabPage)
-			Elements.UIPageLayout.Animated = true
 		end
+
+--		TabPage.Parent = Elements
+--		if not FirstTab and not Ext then
+--			Elements.UIPageLayout.Animated = false
+--			Elements.UIPageLayout:JumpTo(TabPage)
+--			Elements.UIPageLayout.Animated = true
+--		end
 
 		TabButton.UIStroke.Color = SelectedTheme.TabStroke
 
